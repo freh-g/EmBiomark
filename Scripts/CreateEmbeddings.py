@@ -222,12 +222,16 @@ def Main():
     elif args.model == "N2V":
         print(" | ========== > RUNNING NODE2VEC")
         Id2Vec = RunN2V(kg)
+        directory_path = os.path.dirname(args.output)
+        os.makedirs(directory_path, exist_ok=True)
         with open(args.output,'wb') as f:
             pickle.dump(Id2Vec,f)
             
     elif args.model == "M2V":
         print(" | ========== > RUNNING METAPATH2VEC")
         id2vec_meta = run_metapath2vec(stellar_kg)
+        directory_path = os.path.dirname(args.output)
+        os.makedirs(directory_path, exist_ok=True)
         with open(args.output,'wb') as f:
             pickle.dump(id2vec_meta,f)
     
@@ -235,11 +239,15 @@ def Main():
     elif args.model == "DistMult":
         print(" | ========== > RUNNING DISTMULT")
         Id2Vec = RunDistmult(kg)
+        directory_path = os.path.dirname(args.output)
+        os.makedirs(directory_path, exist_ok=True)
         with open(args.output,'wb') as f:
             pickle.dump(Id2Vec,f)
     elif args.model == "TransE":
         print(" | ========== > RUNNING TRANSE")
         Id2Vec = RunTransE(kg)
+        directory_path = os.path.dirname(args.output)
+        os.makedirs(directory_path, exist_ok=True)
         with open(args.output,'wb') as f:
             pickle.dump(Id2Vec,f)
 

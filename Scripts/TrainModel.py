@@ -82,7 +82,9 @@ def Main():
     clfit = clf.fit(X,y)
     
     # SAVE THE FITTED MODEL
-    
+    directory_path = os.path.dirname(args.output)
+    os.makedirs(directory_path, exist_ok=True)
+
     with open(args.output,'wb') as f:
         pickle.dump(clfit,f)
 
