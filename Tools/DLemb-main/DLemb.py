@@ -134,7 +134,8 @@ def Main():
     node_embeddings.shape
 
     Id2Vec=dict(zip(id_to_entity.values(),node_embeddings))
-    
+    directory_path = os.path.dirname(args.output)
+    os.makedirs(directory_path, exist_ok=True)
     with open(args.output,'wb') as f:
         pickle.dump(Id2Vec,f)
 if __name__ == '__main__':

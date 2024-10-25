@@ -146,7 +146,8 @@ def Main():
     Id2Vec = ProduceEmbeddings(model,walks)            
     
     print('\n\n\t\t\t|=====> SAVING THE EMBEDDINGS <=====|')
-    
+    directory_path = os.path.dirname(args.output)
+    os.makedirs(directory_path, exist_ok=True)
     with open(args.output,'wb') as f:
         pickle.dump(Id2Vec,f)
 
